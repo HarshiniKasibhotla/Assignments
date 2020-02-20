@@ -1,0 +1,74 @@
+BEGIN;
+INSERT INTO `category` VALUES (1, 'Foodgrains,Oil,Masala');
+INSERT INTO `category` VALUES (2, 'Dairy, Bakery and Snacks');
+INSERT INTO `category` VALUES (3, 'Beverages');
+INSERT INTO `category` VALUES (4, 'Beauty and Hygiene');
+INSERT INTO `category` VALUES (5, 'Cleaning');
+INSERT INTO `category` VALUES (6, 'Electonics');
+INSERT INTO `category` VALUES (7, 'Mobiles');
+INSERT INTO `category` VALUES (8, 'Cloths');
+INSERT INTO `category` VALUES (9, 'Vegetables');
+INSERT INTO `category` VALUES (10, 'Baby care');
+INSERT INTO `category` VALUES (11, 'Stationery');
+COMMIT;
+
+select * from category;
+
+BEGIN;
+INSERT INTO `communication` VALUES (1, 'First Street', 'Shanthi Nagar', 'Hyderabad', '10-10', 'MG road', 9876563465, 409765, 'TN');
+INSERT INTO `communication` VALUES (2, 'Second Main Road', 'Pragathi Apartments', 'Kolkata', '76-32/2', 'New Town', 8765437654, 876543, 'WB');
+INSERT INTO `communication` VALUES (3, 'James Street', 'Second Main road', 'Pune', '87-21/4', 'SP road', 8765453245, 876545, 'MH');
+INSERT INTO `communication` VALUES (4, 'Sriram Nagar Colony', 'balaji Nagar', 'Secunderabad', '10-10/1', 'Near main busstop', 7654237659, 500086, 'TS');
+COMMIT;
+
+select * from communication;
+
+BEGIN;
+INSERT INTO `customer` VALUES (1001,'user1@abc.com', 7093882336,'Praveen');
+INSERT INTO `customer` VALUES (1002,  'user2@abc.com', 6532876534,'James');
+INSERT INTO `customer` VALUES (1003, 'user3@abc.com', 8754342387, 'Ozvitha');
+INSERT INTO `customer` VALUES (1004, 'user4@abc.com', 9876354323, 'Navneeth');
+INSERT INTO `customer` VALUES (1005, 'user5@abc.com', 7643876754, 'Maya');
+COMMIT;
+
+select * from customer;
+
+BEGIN;
+INSERT INTO `orders` VALUES (1, 1500, '2020-02-04 13:12:37', 1, 1001,1);
+INSERT INTO `orders` VALUES (2, 2500, '2020-02-10 13:13:19', 1, 1001,1);
+INSERT INTO `orders` VALUES (3, 10000, '2020-02-02 13:13:37', 2, 1002,2);
+INSERT INTO `orders` VALUES (4, 90, '2020-02-12 07:51:43', 3, 1004,3);
+INSERT INTO `orders` VALUES (5, 10000, '2020-02-12 09:07:14', 2, 1004,1);
+INSERT INTO `orders` VALUES (6, 1000000, '2020-02-12 09:08:16', 1, 1002,4);
+INSERT INTO `orders` VALUES (7, 1000000, '2020-02-12 09:33:41', 2, 1001,5);
+INSERT INTO `orders` VALUES (8, 50000, '2020-02-12 15:24:07', 1, 1002,4);
+INSERT INTO `orders` VALUES (9, 230000, '2020-02-12 22:35:28', 3, 1002,3);
+COMMIT;
+
+select * from orders;
+desc orders;
+
+
+BEGIN;
+INSERT INTO `product` VALUES (1, 'Sony','2020-02-11', 'Sony Remote Controller', 3500, 'Sony Remore Controller', 6 );
+INSERT INTO `product` VALUES (2, 'Apple',  '2020-02-15', 'Apple Mac Book Pro with Intel I7', 250000, 'Mac Book Pro', 6);
+INSERT INTO `product` VALUES (3, 'Renalts', '2020-02-02',  'Red Ink', 35, 'Pen', 11);
+INSERT INTO `product` VALUES (4, 'Nandi', '2020-01-17',  '100 Pages White Note Book', 86, 'Note Book', 11);
+INSERT INTO `product` VALUES (5, 'Samsung','2020-02-17',  'Samsung Smart Mobile', 65000, 'Mobile', 7);
+COMMIT;
+
+select * from product;
+
+show tables;
+
+BEGIN;
+INSERT INTO `review` VALUES (1024, 'Very Good laptop', '2020-02-02', 5,1001, 2);
+INSERT INTO `review` VALUES (1025,  'Display issues', '2020-02-01', 2, 1003,3);
+INSERT INTO `review` VALUES (1026, 'Great Pen', '2019-11-19', 5,  1001,4);
+INSERT INTO `review` VALUES (1027,'Note Book  is very short', '2020-01-18', 3, 1002,  5);
+INSERT INTO `review` VALUES (1028,'Nice Laptop', '2020-02-16', 5,  1002, 2);
+INSERT INTO `review` VALUES (1029,  'Heating issues', '2020-02-10', 3,1003, 2);
+INSERT INTO `review` VALUES (1030,  'Nice Phone', '2020-01-04', 5,1002, 3);
+INSERT INTO `review` VALUES (1031, 'Changing from 2 starts to 1 star after 6 months usage. Very bad quality', '2020-02-17', 1, 1001, 1);
+COMMIT;
+ select * from review;
