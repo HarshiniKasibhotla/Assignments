@@ -38,6 +38,12 @@ public class Orders {
 		this.orderId = orderId;
 	}
 
+	@Override
+	public String toString() {
+		return "Orders [orderId=" + orderId + ", amount=" + amount + ", date=" + date + ", customer=" + customer
+				+ ", communication=" + communication + ", product=" + product + "]";
+	}
+
 	public double getAmount() {
 		return amount;
 	}

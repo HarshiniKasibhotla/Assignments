@@ -5,8 +5,11 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.parsing.QualifierEntry;
 import org.springframework.stereotype.Repository;
 
+import com.cts.ecart.entity.Communication;
+import com.cts.ecart.entity.Customer;
 import com.cts.ecart.entity.Orders;
 import com.cts.ecart.entity.Product;
 import com.cts.ecart.entity.Review;
@@ -68,6 +71,36 @@ public class EcartDaoImpl implements EcartDao {
 		Object queryResult = query.getResultList();
 		return (List<Review>) queryResult;
 
+	}
+
+	public Review updateReview(int pId, int userId) {
+		Query query = sf.getCurrentSession().createQuery("from Review where product_id = :pId and user_id = :userId");
+		query.setInteger("pId", pId);
+		query.setInteger("userId", userId);
+		Review review = (Review) query.uniqueResult();
+		review.setBody("Good Product");
+		return review;
+
+	}
+
+	public Orders saveOrder(Orders order) {
+		sf.getCurrentSession().save(order);
+		System.out.println("Saved");
+		return order;
+	}
+
+	public Customer getUserById(int userId) {
+		Query query = sf.getCurrentSession().createQuery("from Customer where user_id = :userId");
+		query.setInteger("userId", userId);
+		Object queryResult = query.uniqueResult();
+		return (Customer) queryResult;
+	}
+
+	public Communication getaddressById(String addressId) {
+		Query query = sf.getCurrentSession().createQuery("from Communication where address_id = :addressId");
+		query.setParameter("addressId", addressId);
+		Object queryResult = query.uniqueResult();
+		return (Communication) queryResult;
 	}
 
 }

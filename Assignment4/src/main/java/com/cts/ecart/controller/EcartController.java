@@ -3,13 +3,19 @@ package com.cts.ecart.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cts.ecart.entity.Communication;
+import com.cts.ecart.entity.Customer;
 import com.cts.ecart.entity.Orders;
 import com.cts.ecart.entity.Product;
 import com.cts.ecart.entity.Review;
@@ -72,6 +78,29 @@ public class EcartController {
 	{
 		return service.listReviewByProductId(pId);
 	}
+	
+	@PutMapping("{pId}/reviews")
+	public Review updateReviewById(@PathVariable("pId") int pId,@RequestParam("userId") int userId)
+	{
+		return service.updateReview(pId,userId);
+	}
+	
+	@PostMapping("order/{userId}")
+	public Orders saveOrder(@RequestBody Orders order) {
+		
+		System.out.println("orderdetails:="+order.toString());
+		Product product= service.getProductById(order.getProduct().getProductId());
+		Customer customer=service.getUserById(order.getCustomer().getUserId());
+		Communication communication=service.getaddressById(order.getCommunication().getAddressId());
+		order.setCustomer(customer);
+		order.setProduct(product);
+		order.setCommunication(communication);
+
+		
+		return service.saveOrder(order);
+
+	}
+	
 	
 
 }
